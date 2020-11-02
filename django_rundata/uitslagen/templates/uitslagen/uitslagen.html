@@ -1,0 +1,8 @@
+
+{% extends "uitslagen\base.html" %}
+{% block content %}
+    {% for uitslag in uitslagen %}
+        <h1>{{ uitslag.label}}</h1>
+        <h3>{{ uitslag.timeinseconds }}</h3>
+    {% endfor %}
+{% endblock content%}

@@ -1,3 +1,7 @@
+import { HeaderComponent } from './layout/Header/Header.component';
+import { FooterComponent } from './layout/Footer/Footer.component';
+import { HomePageComponent } from './specialPages/HomePage/HomePage.component';
+import { LandingPageComponent } from './specialPages/landingPage/landingPage.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +10,13 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    // layout
+    LandingPageComponent,
+    HomePageComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

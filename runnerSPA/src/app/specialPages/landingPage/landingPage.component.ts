@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/_services/Authentication.service';
 
 @Component({
   selector: 'app-landingPage',
@@ -8,13 +9,13 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private as: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   public startApp(){
-    sessionStorage.setItem('logedIn', 'true');
+    let iest = this.as.login().subscribe();
     this.router.navigate(['home']);
   }
 }

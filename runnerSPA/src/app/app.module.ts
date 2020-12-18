@@ -1,3 +1,4 @@
+import { AuthenticationService } from './_services/Authentication.service';
 import { HeaderComponent } from './layout/Header/Header.component';
 import { FooterComponent } from './layout/Footer/Footer.component';
 import { HomePageComponent } from './specialPages/HomePage/HomePage.component';
@@ -22,7 +23,9 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

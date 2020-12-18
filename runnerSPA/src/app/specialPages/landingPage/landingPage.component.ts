@@ -12,10 +12,11 @@ export class LandingPageComponent implements OnInit {
   constructor(private router: Router, private as: AuthenticationService) { }
 
   ngOnInit() {
+
   }
 
   public startApp(){
-    let iest = this.as.login().subscribe();
+    this.as.login().subscribe();
     this.router.navigate(['home']);
   }
 }

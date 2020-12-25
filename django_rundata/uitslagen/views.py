@@ -34,7 +34,8 @@ def home(request):
     context = {
         'uitslagen': uitslagen
     }
-    return render(request, 'uitslagen/uitslagen.html', context)
+    # return render(request, 'uitslagen/uitslagen.html', context)
+    return JsonResponse({'example': 'hallo'}, status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def uitslagen_list(request):

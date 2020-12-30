@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 @api_view(['GET', 'POST', 'DELETE'])
-def weer_list(request):
+def weer_analyse(request):
     logger.debug('enter post')
     client = MongoClient()
     db = client.runners_db
@@ -30,10 +30,25 @@ def weer_list(request):
         collection = db.people
         data = pd.DataFrame(list(collection.find()))
         data = verwerkWeerTable(data)
+        result  = data.to_json(orient="records")
+        logger.warning(result)
         lr = stats.linregress(x=data.dayNumber, y=data.temperature)
         return JsonResponse({'slope': lr.slope, 'intercept': lr.intercept,
                              'rvalue': lr.rvalue, 'pvalue': lr.pvalue}, status=status.HTTP_200_OK, safe=False)
 
+
+@api_view(['GET'])
+def weer_list(request):
+    client = MongoClient()
+    db = client.runners_db
+    if request.method == 'GET':
+        collection = db.people
+        data = pd.DataFrame(list(collection.find()))
+        data = verwerkWeerTable(data)
+        result = data.to_json(orient="records")
+        parsed = json.loads(result)
+        logger.warning(result)
+        return JsonResponse(parsed, status=status.HTTP_200_OK, safe=False)
 
 def verwerkWeerTable(data):
     """ maakt van KNMI weergegevens tabel een tabel om verder mee te werken voor lineaire regressie"""

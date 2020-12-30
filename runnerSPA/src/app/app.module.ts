@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WeerListComponent } from './weeer/WeerList/WeerList.component';
 import { AuthenticationService } from './_services/Authentication.service';
 import { HeaderComponent } from './layout/Header/Header.component';
 import { FooterComponent } from './layout/Footer/Footer.component';
@@ -11,6 +13,11 @@ import { HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+//material imports
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +26,17 @@ import { AppComponent } from './app.component';
     LandingPageComponent,
     HomePageComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    WeerListComponent
 
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     AuthenticationService

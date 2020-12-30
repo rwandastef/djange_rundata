@@ -1,0 +1,28 @@
+<h1> Result</h1>
+
+
+<table width=100% mat-table class="highlight"  [dataSource]="dataSource" matSort >
+
+  <ng-container matColumnDef="dateAndId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>date and Id</th>
+      <td mat-cell *matCellDef="let weer"> {{weer.dateAndId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="temperature">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>temperature</th>
+    <td mat-cell *matCellDef="let weer"> {{weer.temperature}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dayNumber">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>dayNumber</th>
+    <td mat-cell *matCellDef="let weer"> {{weer.dayNumber}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns; let weer" ></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  [pageSize]=10
+  showFirstLastButtons></mat-paginator>
+

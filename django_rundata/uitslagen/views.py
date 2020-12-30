@@ -7,6 +7,9 @@ from uitslagen.serializer import UitslagSerializer
 from uitslagen.models import Uitslag
 import logging
 
+
+
+
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
 

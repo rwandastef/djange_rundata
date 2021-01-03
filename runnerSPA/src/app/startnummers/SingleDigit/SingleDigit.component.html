@@ -1,0 +1,21 @@
+<div class="container-fluid">
+
+<input type="file" multiple placeholder="Upload file(-s)" (change)="onFilesSelected($event)">
+
+
+<img [src]="imgURL" height="200" *ngIf="digitSelected">
+
+<div class="row confirmation" *ngIf="digitSelected">
+    <h4>Is this the correct picture</h4>
+    <div class="d-flex justify-content-around">
+        <div class="col">
+            <button type="button" class="btn btn-success" (click)=upload()>Confirm</button>
+        </div>
+            <div class="col">
+                <button type="button" class="btn btn-danger" (click)=cancel()>Cancel</button>
+            </div>
+        </div>
+
+</div>
+
+</div>

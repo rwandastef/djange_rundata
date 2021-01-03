@@ -8,12 +8,13 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'runnerSPA';
-  isLogedIn: boolean;
+  isLogedIn=false;
 
   constructor(private authenticationService: AuthenticationService) {}
 
 
   ngOnInit() {
+    this.isLogedIn = false;
     this.authenticationService.getLoggedInName.subscribe(logedIn =>this.changeBool(logedIn) );
   }
 

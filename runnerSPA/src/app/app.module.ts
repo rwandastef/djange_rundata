@@ -1,3 +1,4 @@
+import { SingleDigitComponent } from './startnummers/SingleDigit/SingleDigit.component';
 import { WeerregressieComponent } from './weeer/weerregressie/weerregressie.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeerListComponent } from './weeer/WeerList/WeerList.component';
@@ -29,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FooterComponent,
     HeaderComponent,
     WeerListComponent,
-    WeerregressieComponent
+    WeerregressieComponent,
+    SingleDigitComponent
 
   ],
   imports: [

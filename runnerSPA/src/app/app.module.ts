@@ -1,3 +1,4 @@
+import { WeerregressieComponent } from './weeer/weerregressie/weerregressie.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeerListComponent } from './weeer/WeerList/WeerList.component';
 import { AuthenticationService } from './_services/Authentication.service';
@@ -27,7 +28,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HomePageComponent,
     FooterComponent,
     HeaderComponent,
-    WeerListComponent
+    WeerListComponent,
+    WeerregressieComponent
 
   ],
   imports: [

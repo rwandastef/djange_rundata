@@ -16,4 +16,8 @@ public getWeer(): Observable<any>{
   return this.httpClient.get<any>(this.uitslagenUrl + '/list')
 }
 
+public getWeerRegression(): Observable<any>{
+  return this.httpClient.get<any>(this.uitslagenUrl);
+}
+
 }

@@ -15,4 +15,8 @@ constructor(private httpClient: HttpClient) { }
 public getWelcome(): Observable<any>{
   return this.httpClient.get<any>(this.uitslagenUrl + '/example')
 }
+
+public getAnalysedUitslagen(): Observable<any>{
+  return this.httpClient.get<any>(this.uitslagenUrl + '/analyse')
+}
 }

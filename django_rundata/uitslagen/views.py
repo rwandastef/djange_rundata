@@ -47,7 +47,7 @@ def home(request):
     return JsonResponse({'example': 'hallo'}, status=status.HTTP_200_OK)
 
 @api_view(['GET', 'POST', 'DELETE'])
-def uitslagen_list(request):
+def analysed_uitslagen(request):
     logger.debug('enter post')
     client = MongoClient()
     db = client.runners_db

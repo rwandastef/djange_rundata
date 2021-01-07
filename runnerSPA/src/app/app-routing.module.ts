@@ -5,6 +5,7 @@ import { HomePageComponent } from './specialPages/HomePage/HomePage.component';
 import { LandingPageComponent } from './specialPages/landingPage/landingPage.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AnalysedUitslagenComponent } from './uitslagen/analysedUitslagen/analysedUitslagen.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,10 @@ const routes: Routes = [
       path: 'list',  component: WeerListComponent},
     { path: 'regression', component: WeerregressieComponent}]
   },
-  { path: 'singledigit', component: SingleDigitComponent}
+  { path: 'singledigit', component: SingleDigitComponent},
+  { path: 'uitslagen', children: [{
+      path: 'analysedUitslagen', component: AnalysedUitslagenComponent}
+  ]}
 ];
 
 @NgModule({

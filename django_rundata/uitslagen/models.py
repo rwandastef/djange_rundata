@@ -7,3 +7,10 @@ class Uitslag(models.Model):
     dayNumber = models.IntegerField(default=1)
     temperature = models.IntegerField(default=1)
     regioCode = models.IntegerField(default=1)
+
+class AnalysedUitslagen:
+   def __init__(self, mean_runtime):
+       self.mean_runtime = mean_runtime
+
+
+

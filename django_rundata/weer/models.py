@@ -8,3 +8,4 @@ class WeerAnalyse(models.Model):
     intercept = models.FloatField(default=0),
     rvalue = models.FloatField(default=0),
     pvalue = models.FloatField(default=0)
+

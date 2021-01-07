@@ -1,3 +1,4 @@
+import { DigitService } from './../../_services/digit.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
@@ -24,7 +25,7 @@ export class SingleDigitComponent implements OnInit {
   rotationAmount = 0;
   urlString : string;
 
-  constructor() { }
+  constructor( private digitService: DigitService) { }
 
   ngOnInit() {
   }
@@ -47,9 +48,7 @@ export class SingleDigitComponent implements OnInit {
   public upload() {
     const formData = new FormData();
     const file = this.files[0];
-    formData.append('files', file, file.name);
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
+    const sub = this.digitService.uploadDigit(file).subscribe(() => console.log('success'), err => console.log(err))
 
 
     // if (this.subId === 0) {

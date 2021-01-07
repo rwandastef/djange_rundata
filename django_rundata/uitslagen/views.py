@@ -1,11 +1,17 @@
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
+from pymongo import MongoClient
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework.decorators import api_view
-from uitslagen.serializer import UitslagSerializer
-from uitslagen.models import Uitslag
+from uitslagen.serializer import UitslagSerializer, AnalysedUitslagenSerializer
+from uitslagen.models import Uitslag, AnalysedUitslagen
 import logging
+import pandas as pd
+pd.options.mode.chained_assignment = None  # default='warn'
+from calendar import isleap
+from scipy import stats
+import json
 
 
 
@@ -43,18 +49,15 @@ def home(request):
 @api_view(['GET', 'POST', 'DELETE'])
 def uitslagen_list(request):
     logger.debug('enter post')
+    client = MongoClient()
+    db = client.runners_db
     if request.method == 'GET':
-        content = Uitslag.objects.all()
-        result = UitslagSerializer(content, many=True)
-        logger.warning(result.data)
-        return JsonResponse({}, status=status.HTTP_200_OK)
-    elif request.method == 'POST':
-        uitslag_data = JSONParser().parse(request)
-        uitslag_serializer = UitslagSerializer(data=uitslag_data)
-        if uitslag_serializer.is_valid():
-            logger.warning(f'show me the money: {uitslag_serializer}')
-            uitslag_serializer.save()
-            return JsonResponse(uitslag_serializer.data, status=status.HTTP_201_CREATED)
-        return JsonResponse(uitslag_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        collection = db.uitslagen
+        data = pd.DataFrame(list(collection.find()))
+        mean_runtime = data["time in seconds"].mean()/60
+        analysedUitslagen = AnalysedUitslagen(mean_runtime)
+        serializer = AnalysedUitslagenSerializer(analysedUitslagen)
+        return JsonResponse(serializer.data, status=status.HTTP_200_OK, safe=False)
+    
 
 

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'uitslagen.apps.UitslagenConfig',
     'weer.apps.WeerConfig',
+    'singledigit.apps.SingledigitConfig',
 
     # CORS
     'corsheaders',

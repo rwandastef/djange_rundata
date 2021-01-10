@@ -9,8 +9,15 @@ class Uitslag(models.Model):
     regioCode = models.IntegerField(default=1)
 
 class AnalysedUitslagen:
-   def __init__(self, mean_runtime):
+   def __init__(self, mean_runtime, slope, intercept, pvalue, rvalue,
+                mean_runtime_men, mean_runtime_women):
        self.mean_runtime = mean_runtime
+       self.slope = slope
+       self.intercept = intercept
+       self.pvalue = pvalue
+       self.rvalue = rvalue
+       self.mean_runtime_men = mean_runtime_men
+       self.mean_runtime_women = mean_runtime_women
 
 
 

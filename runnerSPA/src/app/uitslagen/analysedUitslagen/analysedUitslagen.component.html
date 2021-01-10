@@ -1,4 +1,10 @@
 <div class="container-fluid">
   <h1>Results</h1>
-  <h3>gemiddelde tijd (in minuten): {{analyse.mean_runtime}}</h3>
+  <h3>gemiddelde tijd (in minuten): {{math.round(analyse.mean_runtime*100)/100}}</h3>
+  <h3>gemiddelde tijd vrouwen (in minuten): {{math.round(analyse.mean_runtime_women*100)/100}}</h3>
+  <h3>gemiddelde tijd mannen (in minuten): {{math.round(analyse.mean_runtime_men*100)/100}}</h3>
+
+  <h5> verband tussen dagnummer en hoelang mensen over 10k doen is uit te drukken in de volgende formule</h5>
+  <h6> duur = {{math.round(analyse.slope*100)/100}}X + {{math.round((analyse.intercept/60)*100)/100}}</h6>
+  <h6> met een nauwkeurigheid van {{math.round(analyse.rvalue*1000)/1000}}</h6>
 </div>

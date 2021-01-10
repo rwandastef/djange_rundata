@@ -10,6 +10,7 @@ import { AnalysedUitslag } from './analysedUitslag'
 export class AnalysedUitslagenComponent implements OnInit {
 
   analyse: AnalysedUitslag;
+  math = Math;
 
   constructor(private uitslagenService: UitslagenService) { }
 
